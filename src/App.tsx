@@ -916,6 +916,14 @@ function Home() {
 // ─── App (router) ─────────────────────────────────────────────────────────────
 
 export default function App() {
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirect = urlParams.get('redirect');
+    if (redirect) {
+      window.history.replaceState(null, null, redirect);
+      window.location.reload();
+    }
+  }, []);
   const path = useRoute();
   if (path === '/demo') return <DemoPage navigate={navigate} />;
   if (path === '/privacy') return <PrivacyPage navigate={navigate} />;
