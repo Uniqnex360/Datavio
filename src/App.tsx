@@ -9,16 +9,32 @@ function useRoute() {
   const [path, setPath] = useState(window.location.pathname);
   useEffect(() => {
     const handler = () => {
-      setPath(window.location.pathname);
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      const newPath = window.location.pathname;
+      setPath(newPath);
+
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const el = document.getElementById(hash.slice(1));
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
     };
     window.addEventListener('popstate', handler);
     return () => window.removeEventListener('popstate', handler);
   }, []);
   return path;
 }
-
 export function navigate(to: string) {
+  if (to.startsWith('#')) {
+    window.history.pushState({}, '', to);
+    const el = document.getElementById(to.slice(1));
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+
   window.history.pushState({}, '', to);
   window.dispatchEvent(new PopStateEvent('popstate'));
   window.scrollTo({ top: 0, behavior: 'instant' });
@@ -80,7 +96,7 @@ function useScrollY() {
 // ─── Header ──────────────────────────────────────────────────────────────────
 
 const NAV_LINKS = [
-  { label: 'Platform', href: '#platform' },
+{ label: 'Platform', href: '/#platform', external: true }, 
   { label: 'Solutions', href: '/solutions', external: true },
   { label: 'Use Cases', href: '/use-cases', external: true },
   { label: 'About', href: '/about', external: true },
@@ -100,15 +116,29 @@ export function PageHeader() {
         </a>
 
         <nav className="hidden md:flex items-center gap-7">
-          {NAV_LINKS.map(({ label, href, external }) =>
-            external ? (
-              <a key={label} href={href} onClick={(e) => { e.preventDefault(); navigate(href); }}
-                className="text-sm font-medium text-[#1B2F6E] hover:text-[#00AEEF] transition-colors">{label}</a>
-            ) : (
-              <a key={label} href={href} className="text-sm font-medium text-[#1B2F6E] hover:text-[#00AEEF] transition-colors">{label}</a>
-            )
-          )}
-        </nav>
+  {NAV_LINKS.map(({ label, href, external }) =>
+    external ? (
+      <a
+        key={label}
+        href={href}
+        onClick={(e) => {
+          e.preventDefault();
+          if (href === '/#platform' && window.location.pathname === '/') {
+            const el = document.getElementById('platform');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            navigate(href);
+          }
+        }}
+        className="text-sm font-medium text-[#1B2F6E] hover:text-[#00AEEF] transition-colors"
+      >
+        {label}
+      </a>
+    ) : (
+      <a key={label} href={href} className="text-sm font-medium text-[#1B2F6E] hover:text-[#00AEEF] transition-colors">{label}</a>
+    )
+  )}
+</nav>
 
         <div className="hidden md:block">
           <Link to="/demo" className="bg-[#00AEEF] hover:bg-[#0099d6] text-white text-sm font-semibold px-6 py-2.5 rounded-lg transition-colors shadow-sm">
@@ -122,25 +152,37 @@ export function PageHeader() {
       </div>
 
       {open && (
-        <div className="md:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3">
-          {NAV_LINKS.map(({ label, href, external }) =>
-            external ? (
-              <a key={label} href={href} onClick={(e) => { e.preventDefault(); setOpen(false); navigate(href); }}
-                className="block text-sm font-medium text-[#1B2F6E] hover:text-[#00AEEF]">{label}</a>
-            ) : (
-              <a key={label} href={href} className="block text-sm font-medium text-[#1B2F6E] hover:text-[#00AEEF]" onClick={() => setOpen(false)}>{label}</a>
-            )
-          )}
-          <Link to="/demo" className="block mt-2 bg-[#00AEEF] text-white text-sm font-semibold px-5 py-2.5 rounded-lg text-center" onClick={() => setOpen(false)}>
-            Book a Demo
-          </Link>
-        </div>
-      )}
+  <div className="md:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3">
+    {NAV_LINKS.map(({ label, href, external }) =>
+      external ? (
+        <a
+          key={label}
+          href={href}
+          onClick={(e) => {
+            e.preventDefault();
+            setOpen(false);
+            if (href === '/#platform' && window.location.pathname === '/') {
+              const el = document.getElementById('platform');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            } else {
+              navigate(href);
+            }
+          }}
+          className="block text-sm font-medium text-[#1B2F6E] hover:text-[#00AEEF]"
+        >
+          {label}
+        </a>
+      ) : (
+        <a key={label} href={href} className="block text-sm font-medium text-[#1B2F6E] hover:text-[#00AEEF]" onClick={() => setOpen(false)}>{label}</a>
+      )
+    )}
+  </div>
+)}
     </header>
   );
 }
 
-// ─── Hero Dashboard Slides ────────────────────────────────────────────────────
+// ─── Hero Dashboard Slides ────────────────────────────────a────────────────────
 
 function PieDonut({ pct, color, label }: { pct: number; color: string; label: string }) {
   const r = 28;
@@ -839,7 +881,12 @@ export function SiteFooter() {
         </div>
         <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-400">
           <p>&copy; {new Date().getFullYear()} DatavioAI. All rights reserved.</p>
-          <p>www.datavioai.com</p>
+        <p className='font-bold'>
+        <a href='mailto:sunita@datavioai.com' className='hover:text-["#00AEF"] transition-colors'>
+              sunita@datavioai.com
+        </a>
+        {' • '}
+         www.datavioai.com</p>
         </div>
       </div>
     </footer>

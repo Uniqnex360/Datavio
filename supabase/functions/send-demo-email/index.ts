@@ -14,7 +14,7 @@ serve(async (req) => {
     body: JSON.stringify({
       from: 'Sunita <onboarding@resend.dev>',
       to: email,
-      subject: `${first_name}, thank you for requesting a DataVio AI demo!`,
+      subject: `${first_name}, thank you for requesting a DataVioAI demo!`,
       text: `Hi ${first_name},
 
 Thank you for your interest in DataVio AI.
@@ -30,7 +30,7 @@ We look forward to speaking with you soon.
 Best Regards,
 
 Sunita
-DataVio AI
+DataVioAI
 https://datavioai.com`
     })
   })

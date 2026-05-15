@@ -119,13 +119,13 @@ const sendFormspreeSubmission = async (formData: FormData) => {
         roles: formData.roles.join(", "),
         catalog_challenge: formData.catalog_challenge,
         other_challenge: formData.other_challenge,
-        _subject: `${formData.first_name}, thank you for requesting a DataVio AI demo!`,
+        _subject: `${formData.first_name}, thank you for requesting a DataVioAI demo!`,
         _replyto: formData.email,
         _autoresponse: `Hi ${formData.first_name},
 
-Thank you for your interest in DataVio AI.
+Thank you for your interest in DataVioAI.
 
-We're excited to show you how DataVio AI helps ecommerce businesses automate catalog enrichment, product data normalization, and catalog quality optimization at scale.
+We're excited to show you how DataVioAI helps ecommerce businesses automate catalog enrichment, product data normalization, and catalog quality optimization at scale.
 
 One of our team members will connect with you shortly to schedule your demo.
 
@@ -136,7 +136,7 @@ We look forward to speaking with you soon.
 Best Regards,
 
 Sunita
-DataVio AI
+DataVioAI
 https://datavioai.com`,
       }),
     });
@@ -298,9 +298,7 @@ export default function DemoPage({
                   {form.first_name}, thank you for requesting a DataVio AI demo!
                 </h2>
                 <p className="text-slate-500 text-base leading-relaxed max-w-sm mx-auto mb-6">
-                  Our catalog intelligence team will be in touch within one
-                  business day to confirm your session and start preparing your
-                  free catalog quality report.
+                  Our catalog intelligence team will contact you shortly to schedule your personalized DataVioAI demo and prepare your complimentary catalog quality analysis.
                 </p>
 
                 {emailSent && (
