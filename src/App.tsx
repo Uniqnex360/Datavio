@@ -767,7 +767,7 @@ function CtaBand() {
           <Link to="/demo" className="inline-flex items-center gap-2 bg-[#00AEEF] hover:bg-[#0099d6] text-white font-bold px-8 py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-[#00AEEF]/30 hover:-translate-y-0.5 text-base">
             Book Your Demo <ArrowRight className="w-5 h-5" />
           </Link>
-          <a href="mailto:info@datavio.com" className="inline-flex items-center gap-2 border-2 border-white/30 text-white hover:border-white font-semibold px-8 py-4 rounded-xl transition-all text-base">
+          <a href="mailto:sunita@datavioai.com" className="inline-flex items-center gap-2 border-2 border-white/30 text-white hover:border-white font-semibold px-8 py-4 rounded-xl transition-all text-base">
             <Mail className="w-4 h-4" /> Email Us Directly
           </a>
         </div>
@@ -786,7 +786,7 @@ function CtaBand() {
         </div>
 
         <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap justify-center gap-8 text-sm text-white/40">
-          <div className="flex items-center gap-2"><Mail className="w-4 h-4" /> info@datavio.com</div>
+          <div className="flex items-center gap-2"><Mail className="w-4 h-4" /> sunita@datavioai.com</div>
           <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> www.datavioai.com</div>
         </div>
       </div>
