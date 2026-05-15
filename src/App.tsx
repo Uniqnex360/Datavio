@@ -96,7 +96,7 @@ export function PageHeader() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${solid ? 'bg-white shadow-sm border-b border-slate-100 py-3' : 'bg-white py-4'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="flex-shrink-0">
-          <img src="/Datavio_logo.png" alt="DatavioAI" className="h-14 w-auto" />
+          <img src="/Datavio_logo.png" alt="DatavioAI" className="h-16 w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-7">
@@ -787,7 +787,7 @@ function CtaBand() {
 
         <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap justify-center gap-8 text-sm text-white/40">
           <div className="flex items-center gap-2"><Mail className="w-4 h-4" /> info@datavio.com</div>
-          <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> www.datavio.com</div>
+          <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> www.datavioai.com</div>
         </div>
       </div>
     </section>
@@ -812,7 +812,7 @@ export function SiteFooter() {
         <div className="grid md:grid-cols-4 gap-10 mb-10">
           <div className="md:col-span-2">
             <div className="inline-block bg-white rounded-xl px-5 py-3 mb-5 shadow-sm border border-slate-200">
-              <img src="/Datavio_logo.png" alt="DatavioAI" className="h-16 w-auto" />
+<img src="/Datavio_logo.png" alt="DatavioAI" className="h-20 w-auto" />
             </div>
             <p className="text-sm leading-relaxed max-w-xs text-slate-600 font-medium">
               Your product data is your most powerful growth asset. DatavioAI turns raw, inconsistent catalog data into enriched, governed, omnichannel-ready content — so every product works harder across every channel.
@@ -839,7 +839,7 @@ export function SiteFooter() {
         </div>
         <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-400">
           <p>&copy; {new Date().getFullYear()} DatavioAI. All rights reserved.</p>
-          <p>info@datavio.com &bull; www.datavio.com</p>
+          <p>www.datavioai.com</p>
         </div>
       </div>
     </footer>
