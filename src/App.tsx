@@ -916,20 +916,26 @@ function Home() {
 // ─── App (router) ─────────────────────────────────────────────────────────────
 
 export default function App() {
+  // Handle redirect from 404.html
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const redirect = urlParams.get('redirect');
     if (redirect) {
       window.history.replaceState(null, null, redirect);
-      window.location.reload();
     }
   }, []);
+
   const path = useRoute();
-  if (path === '/demo') return <DemoPage navigate={navigate} />;
-  if (path === '/privacy') return <PrivacyPage navigate={navigate} />;
-  if (path === '/use-cases') return <UseCasesPage navigate={navigate} />;
-  if (path === '/about') return <AboutPage navigate={navigate} />;
-  if (path === '/solutions') return <SolutionsPage navigate={navigate} />;
-  if (path === '/contact') return <ContactPage />;
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const redirectPath = urlParams.get('redirect');
+  const currentPath = redirectPath || path;
+
+  if (currentPath === '/demo') return <DemoPage navigate={navigate} />;
+  if (currentPath === '/privacy') return <PrivacyPage navigate={navigate} />;
+  if (currentPath === '/use-cases') return <UseCasesPage navigate={navigate} />;
+  if (currentPath === '/about') return <AboutPage navigate={navigate} />;
+  if (currentPath === '/solutions') return <SolutionsPage navigate={navigate} />;
+  if (currentPath === '/contact') return <ContactPage />;
   return <Home />;
 }
