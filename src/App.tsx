@@ -882,7 +882,8 @@ export function SiteFooter() {
         <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-400">
           <p>&copy; {new Date().getFullYear()} DatavioAI. All rights reserved.</p>
         <p className='font-bold'>
-        <a href='mailto:sunita@datavioai.com' className='hover:text-["#00AEF"] transition-colors'>
+        <a href='mailto:sunita@datavioai.com' className='hover:text-[#00AEEF] transition-colors'
+>
               sunita@datavioai.com
         </a>
         {' • '}
