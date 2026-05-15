@@ -240,11 +240,8 @@ export default function DemoPage({
           }}
           className="flex-shrink-0"
         >
-          <img
-            src="/Datavio_logo.png"
-            alt="DatavioAI"
-            className="h-12 w-auto"
-          />
+         <img src="/Datavio_logo.png" alt="DatavioAI" className="h-20 w-auto" />
+
         </a>
         <a
           href="/"

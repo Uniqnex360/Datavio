@@ -828,8 +828,19 @@ function CtaBand() {
         </div>
 
         <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap justify-center gap-8 text-sm text-white/40">
-          <div className="flex items-center gap-2"><Mail className="w-4 h-4" /> sunita@datavioai.com</div>
-          <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> www.datavioai.com</div>
+          <div className="flex items-center gap-2 font-bold">
+  <Mail className="w-4 h-4" /> 
+  <a 
+    href="mailto:sunita@datavioai.com"
+    className="hover:text-[#00AEEF] transition-colors"
+  >
+    sunita@datavioai.com
+  </a>
+</div>
+<div className="flex items-center gap-2 font-bold">
+  <Globe className="w-4 h-4" /> 
+  www.datavioai.com
+</div>
         </div>
       </div>
     </section>
