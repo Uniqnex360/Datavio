@@ -254,7 +254,7 @@ export default function DemoPage({
           }}
           className="text-sm font-medium text-slate-500 hover:text-[#1B2F6E] transition-colors hidden sm:block"
         >
-          ← Back to website
+          ← Back to homepage
         </a>
       </header>
 
